@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
           .then((post) => res.status(201).json(post))
           .catch(() =>
             res
-              .status(500)
+              .status(404)
               .json({ error: "The post information could not be retrieved." })
           );
       })
@@ -41,7 +41,7 @@ router.post("/:id/comments", (req, res) => {
             Data.findCommentById(`${object.id}`)
               .then(({comment}) => res.status(201).json({comment}))
               .catch(() =>
-                res.status(500).json({
+                res.status(404).json({
                   error: "The comment data could not be retrieved."
                 })
               );
@@ -107,7 +107,7 @@ router.get("/:id/comments", (req, res) => {
         })
         .catch(() =>
           res
-            .status(500)
+            .status(404)
             .json({ error: "The comments information could not be retrieved." })
         );
     })
