@@ -39,7 +39,7 @@ router.post("/:id/comments", (req, res) => {
         Data.insertComment(req.body)
           .then((object) => {
             Data.findCommentById(`${object.id}`)
-              .then((comment) => res.status(201).json(comment))
+              .then(({comment}) => res.status(201).json({comment}))
               .catch(() =>
                 res.status(500).json({
                   error: "The comment data could not be retrieved."
